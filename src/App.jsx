@@ -1923,8 +1923,10 @@ const LandingPage = ({ onNavigate }) => {
 // ROOM SHADER — dark room canvas, mouse is a flickering lantern
 // ─────────────────────────────────────────────────────────────────────────────
 
-const RoomShader = () => {
+const RoomShader = ({ intensity = 1 }) => {
   const canvasRef = useRef(null);
+  const intensityRef = useRef(intensity);
+  useEffect(() => { intensityRef.current = intensity; }, [intensity]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -1958,14 +1960,18 @@ const RoomShader = () => {
       const W = canvas.width, H = canvas.height;
       const { x: mx, y: my } = mouse;
       const t = Date.now() * 0.001;
+      const iv = intensityRef.current;
 
-      // Candle flicker — subtle radius variation
-      const lightR = 210 + Math.sin(t * 2.1) * 8 + Math.sin(t * 5.3) * 4 + (Math.random() - 0.5) * 2;
+      // Scale dramatic parameters by intensity
+      const overlayAlpha = 0.09 + 0.84 * iv;                        // 0.09 → 0.93
+      const lightR = (210 + Math.sin(t * 2.1) * 8 + Math.sin(t * 5.3) * 4 + (Math.random() - 0.5) * 2)
+                     * (1 + (1 - iv) * 1.5);                         // bigger radius = less dramatic
+      const amberStrength = iv;
 
       ctx.clearRect(0, 0, W, H);
 
       // ── Dark room ─────────────────────────────────────────────────────────
-      ctx.fillStyle = "rgba(0,0,0,0.93)";
+      ctx.fillStyle = `rgba(0,0,0,${overlayAlpha})`;
       ctx.fillRect(0, 0, W, H);
 
       // Punch a soft lantern hole using destination-out composite
@@ -1983,8 +1989,8 @@ const RoomShader = () => {
 
       // Warm amber wash over the revealed area
       const amber = ctx.createRadialGradient(mx, my, 0, mx, my, lightR);
-      amber.addColorStop(0,   "rgba(255,200,100,0.11)");
-      amber.addColorStop(0.5, "rgba(255,155,50,0.05)");
+      amber.addColorStop(0,   `rgba(255,200,100,${0.11 * amberStrength})`);
+      amber.addColorStop(0.5, `rgba(255,155,50,${0.05 * amberStrength})`);
       amber.addColorStop(1,   "rgba(0,0,0,0)");
       ctx.fillStyle = amber;
       ctx.beginPath();
@@ -2066,7 +2072,7 @@ const App = () => {
   if (activeSection === null) {
     return (
       <>
-        {!isMobile && <RoomShader />}
+        {!isMobile && <RoomShader intensity={1} />}
         {!isMobile && <WoodCursor color="#F0F0F0" />}
         {!isMobile && <CursorTrail color="#F0F0F0" />}
         <LandingPage onNavigate={setActiveSection} />
@@ -2076,7 +2082,7 @@ const App = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      {!isMobile && <RoomShader />}
+      {!isMobile && <RoomShader intensity={0.1} />}
       {!isMobile && <WoodCursor />}
       {!isMobile && <CursorTrail />}
       <TopNav
