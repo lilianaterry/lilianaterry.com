@@ -1920,6 +1920,140 @@ const LandingPage = ({ onNavigate }) => {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
+// ROOM SHADER — dark room canvas, mouse is a flickering lantern
+// ─────────────────────────────────────────────────────────────────────────────
+
+const RoomShader = () => {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    let frame;
+
+    const resize = () => {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener("resize", resize);
+
+    // Initialise dust motes
+    const COUNT = 130;
+    const motes = Array.from({ length: COUNT }, () => ({
+      x:     Math.random() * window.innerWidth,
+      y:     Math.random() * window.innerHeight,
+      vx:    (Math.random() - 0.5) * 0.25,
+      vy:    -0.07 - Math.random() * 0.32,
+      r:     0.7 + Math.random() * 1.9,
+      phase: Math.random() * Math.PI * 2,
+      rate:  0.007 + Math.random() * 0.024,
+    }));
+
+    const mouse = { x: -2000, y: -2000 };
+    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    window.addEventListener("mousemove", onMove);
+
+    const draw = () => {
+      const W = canvas.width, H = canvas.height;
+      const { x: mx, y: my } = mouse;
+      const t = Date.now() * 0.001;
+
+      // Candle flicker — subtle radius variation
+      const lightR = 210 + Math.sin(t * 2.1) * 8 + Math.sin(t * 5.3) * 4 + (Math.random() - 0.5) * 2;
+
+      ctx.clearRect(0, 0, W, H);
+
+      // ── Dark room ─────────────────────────────────────────────────────────
+      ctx.fillStyle = "rgba(0,0,0,0.93)";
+      ctx.fillRect(0, 0, W, H);
+
+      // Punch a soft lantern hole using destination-out composite
+      ctx.globalCompositeOperation = "destination-out";
+      const hole = ctx.createRadialGradient(mx, my, 0, mx, my, lightR);
+      hole.addColorStop(0,    "rgba(0,0,0,0.97)");
+      hole.addColorStop(0.40, "rgba(0,0,0,0.82)");
+      hole.addColorStop(0.70, "rgba(0,0,0,0.32)");
+      hole.addColorStop(1,    "rgba(0,0,0,0)");
+      ctx.fillStyle = hole;
+      ctx.beginPath();
+      ctx.arc(mx, my, lightR, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalCompositeOperation = "source-over";
+
+      // Warm amber wash over the revealed area
+      const amber = ctx.createRadialGradient(mx, my, 0, mx, my, lightR);
+      amber.addColorStop(0,   "rgba(255,200,100,0.11)");
+      amber.addColorStop(0.5, "rgba(255,155,50,0.05)");
+      amber.addColorStop(1,   "rgba(0,0,0,0)");
+      ctx.fillStyle = amber;
+      ctx.beginPath();
+      ctx.arc(mx, my, lightR, 0, Math.PI * 2);
+      ctx.fill();
+
+      // ── Dust motes ────────────────────────────────────────────────────────
+      motes.forEach((p) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.phase += p.rate;
+        // Wrap around viewport
+        if (p.y < -10)    { p.y = H + 10; p.x = Math.random() * W; }
+        if (p.x < -10)    p.x = W + 10;
+        if (p.x > W + 10) p.x = -10;
+
+        const dx = p.x - mx, dy = p.y - my;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const twinkle = 0.5 + 0.5 * Math.sin(p.phase * 2.8);
+
+        if (dist < lightR) {
+          const prox  = 1 - dist / lightR;
+          const alpha = 0.12 + prox * 0.78 * twinkle;
+          const size  = p.r * (1 + prox * 2.0);
+
+          // Core bright mote
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,245,215,${alpha})`;
+          ctx.fill();
+
+          // Soft halo for motes deep in the light
+          if (prox > 0.25 && twinkle > 0.55) {
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, size * 4, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(255,215,130,${alpha * 0.18})`;
+            ctx.fill();
+          }
+        } else {
+          // Nearly invisible in darkness
+          const alpha = 0.012 + 0.018 * twinkle;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r * 0.55, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(190,185,215,${alpha})`;
+          ctx.fill();
+        }
+      });
+
+      frame = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("resize", resize);
+    };
+  }, []);
+
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 9000 }}
+    />
+  );
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
 // APP ROOT
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -1932,6 +2066,7 @@ const App = () => {
   if (activeSection === null) {
     return (
       <>
+        {!isMobile && <RoomShader />}
         {!isMobile && <WoodCursor color="#F0F0F0" />}
         {!isMobile && <CursorTrail color="#F0F0F0" />}
         <LandingPage onNavigate={setActiveSection} />
@@ -1941,6 +2076,7 @@ const App = () => {
 
   return (
     <div style={{ minHeight: "100vh" }}>
+      {!isMobile && <RoomShader />}
       {!isMobile && <WoodCursor />}
       {!isMobile && <CursorTrail />}
       <TopNav
