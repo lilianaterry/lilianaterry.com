@@ -37,14 +37,14 @@ const ContactSection = () => {
             maxWidth: "300px",
           }}
         >
-          Whether you have a project in mind, want to collaborate on a zine, or
-          just want to say hi — my inbox is always open.
+          Whether you have questions about natural dye workshops, want to
+          collaborate, or just want to say hi — my inbox is always open.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <ContactButton href="mailto:hello@example.com" label="✉  Email Me" primary />
-          <ContactButton href="#" label="◎  Instagram" />
-          <ContactButton href="#" label="◈  Behance" />
-          <ContactButton href="#" label="⊹  Are.na" />
+          <ContactButton
+            href="mailto:lilianaterrys@gmail.com"
+            label="✉  Email Me"
+          />
         </div>
       </MacWindow>
     </div>
