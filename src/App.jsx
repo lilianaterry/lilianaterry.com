@@ -64,6 +64,7 @@ const MainContent = ({ activeSection, subPath, onSubNavigate }) => {
   return (
     <main
       style={{
+        position: "relative",
         paddingTop: "54px",
         minHeight: "100vh",
         background: C.white,

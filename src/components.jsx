@@ -772,6 +772,7 @@ export const RoomShader = ({ intensity = 1, transitionRef = null }) => {
 
 export const LightShader = () => {
   const canvasRef = useRef(null);
+  // zIndex: 0 keeps motes behind page content (main gets position:relative to win by document order)
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -850,5 +851,5 @@ export const LightShader = () => {
     };
   }, []);
 
-  return <canvas ref={canvasRef} style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 9000 }} />;
+  return <canvas ref={canvasRef} style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0 }} />;
 };

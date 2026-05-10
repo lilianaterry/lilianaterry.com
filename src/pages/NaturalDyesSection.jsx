@@ -782,11 +782,17 @@ const InvasiveBadge = () => (
   </>
 );
 
-// 3×3 grid cell — hover shows fiber/part as labeled sections, no dimming
+const MOCK_COLORS = [
+  "#B8C4CC", "#C9B87A", "#C47A65", "#8A7060",
+  "#B89A5A", "#8A9E8A", "#B89090", "#C4B090", "#A090B0",
+];
+
+// 3×3 grid cell — colored mock bg until real image loads; hover shows fiber/part, no shadow
 const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
   const [hovered, setHovered] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
   const hasMeta = img && (img.fiber || img.part);
-  const shadow = "0 0 10px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.8)";
+  const showColor = !img?.src || imgFailed;
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -794,14 +800,15 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
       style={{
         aspectRatio: "1/1",
         overflow: "hidden",
-        background: C.offWhite,
+        background: showColor ? MOCK_COLORS[index % MOCK_COLORS.length] : C.offWhite,
         position: "relative",
       }}
     >
-      {img && (
+      {img?.src && !imgFailed && (
         <img
           src={img.src}
           alt={`${plantName} batch ${batchLabel} — ${index + 1}`}
+          onError={() => setImgFailed(true)}
           style={{
             width: "100%",
             height: "100%",
@@ -831,8 +838,7 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
                   fontSize: "0.58rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#FFFFFF",
-                  textShadow: shadow,
+                  color: "#555555",
                   marginBottom: "3px",
                 }}
               >
@@ -843,8 +849,7 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "0.96rem",
                   fontWeight: "700",
-                  color: "#FFFFFF",
-                  textShadow: shadow,
+                  color: C.black,
                 }}
               >
                 {img.fiber}
@@ -859,8 +864,7 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
                   fontSize: "0.58rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#FFFFFF",
-                  textShadow: shadow,
+                  color: "#555555",
                   marginBottom: "3px",
                 }}
               >
@@ -871,8 +875,7 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "0.96rem",
                   fontWeight: "700",
-                  color: "#FFFFFF",
-                  textShadow: shadow,
+                  color: C.black,
                 }}
               >
                 {img.part}
