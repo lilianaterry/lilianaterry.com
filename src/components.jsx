@@ -4,6 +4,10 @@ import { useIsMobile } from "./hooks.js";
 
 export { useIsMobile };
 
+// Shared last-known mouse position so cursors mount at the right spot immediately
+let _mouseX = -200, _mouseY = -200;
+window.addEventListener("mousemove", (e) => { _mouseX = e.clientX; _mouseY = e.clientY; }, { passive: true });
+
 // ─────────────────────────────────────────────────────────────────────────────
 // SVG ICONS
 // ─────────────────────────────────────────────────────────────────────────────
@@ -145,29 +149,34 @@ export const ProjectCard = ({ card, isDraggable, onDragStart }) => {
       <div
         style={{
           width: "100%",
-          height: card.imgHeight || "118px",
+          height: card.imgAspect ? undefined : (card.imgHeight || "118px"),
+          aspectRatio: card.imgAspect || undefined,
           background: bg,
           marginBottom: "10px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          overflow: "hidden",
         }}
       >
-        {getThumbIcon(card.type)}
+        {card.img
+          ? <img src={card.img} alt={card.title} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+          : getThumbIcon(card.type)
+        }
       </div>
       <div
         style={{
           fontFamily: "'Cinzel', serif",
           fontSize: "0.78rem",
           color: C.black,
-          marginBottom: "7px",
+          marginBottom: card.hideType ? 0 : "7px",
           lineHeight: 1.3,
           letterSpacing: "0.03em",
         }}
       >
         {card.title}
       </div>
-      <StampBadge type={card.type} />
+      {!card.hideType && <StampBadge type={card.type} />}
     </div>
   );
 };
@@ -483,8 +492,8 @@ export const TopNav = ({ activeSection, setActiveSection, onHome }) => {
 // CURSOR
 // ─────────────────────────────────────────────────────────────────────────────
 
-export const StarCursor = ({ color = "#0D0D0D" }) => {
-  const [pos, setPos] = useState({ x: -200, y: -200 });
+export const StarCursor = ({ color = "#0D0D0D", zIndex = 99999 }) => {
+  const [pos, setPos] = useState(() => ({ x: _mouseX, y: _mouseY }));
   const [clicking, setClicking] = useState(false);
 
   useEffect(() => {
@@ -508,7 +517,7 @@ export const StarCursor = ({ color = "#0D0D0D" }) => {
         left: pos.x - 17,
         top: pos.y - 17,
         pointerEvents: "none",
-        zIndex: 99999,
+        zIndex,
         transformOrigin: "17px 17px",
         transform: clicking ? "scale(0.78) rotate(45deg)" : "scale(1) rotate(0deg)",
         transition: clicking
@@ -543,7 +552,7 @@ const SPARKLE_SHAPES = [
   (s, c) => `<svg width="${s}" height="${s}" viewBox="0 0 10 10" stroke="${c}" stroke-width="1.8" stroke-linecap="round"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg>`,
 ];
 
-export const CursorTrail = ({ color = "#0D0D0D" }) => {
+export const CursorTrail = ({ color = "#0D0D0D", zIndex = 99997 }) => {
   const containerRef = useRef(null);
   const lastPos = useRef({ x: 0, y: 0 });
   const colorRef = useRef(color);
@@ -590,7 +599,7 @@ export const CursorTrail = ({ color = "#0D0D0D" }) => {
   return (
     <div
       ref={containerRef}
-      style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 99997, overflow: "hidden" }}
+      style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex, overflow: "hidden" }}
     />
   );
 };

@@ -38,12 +38,15 @@ const ContactSection = () => {
           }}
         >
           Whether you have questions about natural dye workshops, want to
-          collaborate, or just want to say hi — my inbox is always open.
+          collaborate, or just want to say hi — my inbox is always open.{" "}
+          <br></br> <br></br> The color index for PNW invasive plants started as
+          a cold email to the King County Noxious Weeds Program. You never know
+          where an email could take you ⁠❤︎
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
           <ContactButton
             href="mailto:lilianaterrys@gmail.com"
-            label="✉  Email Me"
+            label="⋆˙⟡  Email Me ₊⊹⋆"
           />
         </div>
       </MacWindow>

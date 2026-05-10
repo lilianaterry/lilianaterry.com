@@ -41,36 +41,98 @@ const AboutSection = () => {
             style={{
               background: C.offWhite,
               height: "188px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
               border: `1px solid ${C.lightGray}`,
+              overflow: "hidden",
             }}
           >
-            <span style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.62rem", color: C.black, opacity: 0.3 }}>
-              [ photo here ]
-            </span>
+            <img
+              src="dist/images/about/self-portrait.jpeg"
+              alt="Liliana Airhart"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement.style.display = "flex";
+                e.currentTarget.parentElement.innerHTML =
+                  '<span style="font-family: Space Mono, monospace; font-size: 0.62rem; color: #0D0D0D; opacity: 0.3; margin: auto">[ photo here ]</span>';
+              }}
+            />
           </div>
-          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.62rem", color: C.black, opacity: 0.4, marginTop: "8px", textAlign: "center" }}>
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.62rem",
+              color: C.black,
+              opacity: 0.4,
+              marginTop: "8px",
+              textAlign: "center",
+            }}
+          >
             that's me →
           </p>
         </div>
 
         {/* Bio */}
         <div>
-          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.78rem", lineHeight: "1.9", color: C.black, marginBottom: "18px" }}>
-            Hi! I'm a multidisciplinary illustrator and graphic designer with a love for texture, imperfection, and the handmade. My work lives somewhere between the analog and digital — printed zines, motion loops, and poster series that feel like they were cut out and glued together with a lot of love.
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.78rem",
+              lineHeight: "1.9",
+              color: C.black,
+              marginBottom: "18px",
+            }}
+          >
+            Hello! I'm a multidisciplinary illustrator and graphic designer with
+            a love for texture, imperfection, and the handmade. My work lives
+            somewhere between the analog and digital — printed zines, motion
+            loops, and poster series that feel like they were cut out and glued
+            together with a lot of love.
           </p>
           <HandDrawnLine />
-          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.78rem", lineHeight: "1.9", color: C.black, marginTop: "18px", marginBottom: "18px" }}>
-            I'm inspired by old bookmarks, botanical prints, late-night convenience store lighting, and the way certain typefaces feel like a specific decade. I believe design should be joyful first, legible second.
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.78rem",
+              lineHeight: "1.9",
+              color: C.black,
+              marginTop: "18px",
+              marginBottom: "18px",
+            }}
+          >
+            I'm inspired by old bookmarks, botanical prints, late-night
+            convenience store lighting, and the way certain typefaces feel like
+            a specific decade. I believe design should be joyful first, legible
+            second.
           </p>
           <HandDrawnLine />
-          <p style={{ fontFamily: "'Space Mono', monospace", fontSize: "0.78rem", lineHeight: "1.9", color: C.black, marginTop: "18px", marginBottom: "28px" }}>
-            Currently available for freelance illustration, zine collaborations, and cover art. Based in the studio with too many felt-tip pens.
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.78rem",
+              lineHeight: "1.9",
+              color: C.black,
+              marginTop: "18px",
+              marginBottom: "28px",
+            }}
+          >
+            Currently available for freelance illustration, zine collaborations,
+            and cover art. Based in the studio with too many felt-tip pens.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-            {["Illustration", "Risograph", "Motion", "Editorial", "Lettering", "Collage", "Typography"].map((skill) => (
+            {[
+              "Illustration",
+              "Risograph",
+              "Motion",
+              "Editorial",
+              "Lettering",
+              "Collage",
+              "Typography",
+            ].map((skill) => (
               <span
                 key={skill}
                 style={{
