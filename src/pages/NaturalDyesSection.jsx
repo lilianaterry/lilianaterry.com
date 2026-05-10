@@ -108,9 +108,9 @@ const PLANTS = [
         id: "b1",
         label: "01",
         images: [
-          { src: "/images/natural-dyes/weld/b1-1.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/weld/b1-2.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/weld/b1-3.jpg", fiber: "", part: "" },
+          { src: "/images/natural-dyes/weld/b1-1.jpg", fiber: "Linen", part: "Stems" },
+          { src: "/images/natural-dyes/weld/b1-2.jpg", fiber: "Wool", part: "Flowers" },
+          { src: "/images/natural-dyes/weld/b1-3.jpg", fiber: "Linen", part: "Leaves" },
         ],
         dyePrep: {
           mordant: "Alum",
@@ -142,15 +142,15 @@ const PLANTS = [
         id: "b1",
         label: "01",
         images: [
-          { src: "/images/natural-dyes/madder/b1-1.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-2.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-3.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-4.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-5.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-6.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-7.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-8.jpg", fiber: "", part: "" },
-          { src: "/images/natural-dyes/madder/b1-9.jpg", fiber: "", part: "" },
+          { src: "/images/natural-dyes/madder/b1-1.jpg", fiber: "Linen", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-2.jpg", fiber: "Wool", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-3.jpg", fiber: "Cotton", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-4.jpg", fiber: "Linen", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-5.jpg", fiber: "Wool", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-6.jpg", fiber: "Cotton", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-7.jpg", fiber: "Linen", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-8.jpg", fiber: "Wool", part: "Roots" },
+          { src: "/images/natural-dyes/madder/b1-9.jpg", fiber: "Cotton", part: "Roots" },
         ],
         dyePrep: {
           mordant: "Alum",
@@ -182,21 +182,9 @@ const PLANTS = [
         id: "b1",
         label: "01",
         images: [
-          {
-            src: "/images/natural-dyes/black-walnut/b1-1.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/black-walnut/b1-2.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/black-walnut/b1-3.jpg",
-            fiber: "",
-            part: "",
-          },
+          { src: "/images/natural-dyes/black-walnut/b1-1.jpg", fiber: "Linen", part: "Hulls" },
+          { src: "/images/natural-dyes/black-walnut/b1-2.jpg", fiber: "Wool", part: "Hulls" },
+          { src: "/images/natural-dyes/black-walnut/b1-3.jpg", fiber: "Cotton", part: "Hulls" },
         ],
         dyePrep: {
           mordant: "None (self-mordanting)",
@@ -229,36 +217,12 @@ const PLANTS = [
         id: "b1",
         label: "01",
         images: [
-          {
-            src: "/images/natural-dyes/onion-skin/b1-1.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/onion-skin/b1-2.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/onion-skin/b1-3.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/onion-skin/b1-4.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/onion-skin/b1-5.jpg",
-            fiber: "",
-            part: "",
-          },
-          {
-            src: "/images/natural-dyes/onion-skin/b1-6.jpg",
-            fiber: "",
-            part: "",
-          },
+          { src: "/images/natural-dyes/onion-skin/b1-1.jpg", fiber: "Cotton", part: "Skins" },
+          { src: "/images/natural-dyes/onion-skin/b1-2.jpg", fiber: "Wool", part: "Skins" },
+          { src: "/images/natural-dyes/onion-skin/b1-3.jpg", fiber: "Cotton", part: "Skins" },
+          { src: "/images/natural-dyes/onion-skin/b1-4.jpg", fiber: "Wool", part: "Skins" },
+          { src: "/images/natural-dyes/onion-skin/b1-5.jpg", fiber: "Cotton", part: "Skins" },
+          { src: "/images/natural-dyes/onion-skin/b1-6.jpg", fiber: "Wool", part: "Skins" },
         ],
         dyePrep: {
           mordant: "Alum",
@@ -429,18 +393,19 @@ const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
                 zIndex: hovered ? 1 : 0,
               }}
             >
-              {/* Inner div clips the image */}
+              {/* Inner div clips the image; plant mock color shows if image absent */}
               <div
                 style={{
                   position: "absolute",
                   inset: 0,
                   overflow: "hidden",
-                  background: C.offWhite,
+                  background: PLANT_MOCK_COLORS[plant.id] ?? C.offWhite,
                 }}
               >
                 <img
                   src={img}
                   alt={plant.commonName}
+                  onError={(e) => { e.currentTarget.style.display = "none"; }}
                   style={{
                     width: "100%",
                     height: "100%",
@@ -782,17 +747,25 @@ const InvasiveBadge = () => (
   </>
 );
 
+// 9 distinct colors cycling across cells in a 3×3 grid
 const MOCK_COLORS = [
   "#B8C4CC", "#C9B87A", "#C47A65", "#8A7060",
   "#B89A5A", "#8A9E8A", "#B89090", "#C4B090", "#A090B0",
 ];
 
-// 3×3 grid cell — colored mock bg until real image loads; hover shows fiber/part, no shadow
+// One representative color per plant — used on index swatches and plant photo placeholder
+const PLANT_MOCK_COLORS = {
+  "avocado":      "#D4B896",
+  "weld":         "#C9B660",
+  "madder":       "#C46055",
+  "black-walnut": "#7A6050",
+  "onion-skin":   "#C4A050",
+};
+
+// 3×3 grid cell — always shows mock color; hover reveals fiber/part in a white panel
 const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
   const [hovered, setHovered] = useState(false);
-  const [imgFailed, setImgFailed] = useState(false);
   const hasMeta = img && (img.fiber || img.part);
-  const showColor = !img?.src || imgFailed;
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -800,88 +773,74 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
       style={{
         aspectRatio: "1/1",
         overflow: "hidden",
-        background: showColor ? MOCK_COLORS[index % MOCK_COLORS.length] : C.offWhite,
+        background: MOCK_COLORS[index % MOCK_COLORS.length],
         position: "relative",
       }}
     >
-      {img?.src && !imgFailed && (
-        <img
-          src={img.src}
-          alt={`${plantName} batch ${batchLabel} — ${index + 1}`}
-          onError={() => setImgFailed(true)}
-          style={{
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            display: "block",
-          }}
-        />
-      )}
       {hasMeta && hovered && (
         <div
           style={{
             position: "absolute",
             inset: 0,
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: "10px",
             pointerEvents: "none",
           }}
         >
-          {img.fiber && (
-            <div style={{ textAlign: "center" }}>
-              <div
-                style={{
+          <div style={{
+            background: "rgba(255,255,255,0.88)",
+            padding: "10px 16px",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "8px",
+          }}>
+            {img.fiber && (
+              <div style={{ textAlign: "center" }}>
+                <div style={{
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "0.58rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#555555",
-                  marginBottom: "3px",
-                }}
-              >
-                Fiber
-              </div>
-              <div
-                style={{
+                  color: "#666666",
+                  marginBottom: "2px",
+                }}>
+                  Fiber
+                </div>
+                <div style={{
                   fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.96rem",
+                  fontSize: "0.88rem",
                   fontWeight: "700",
                   color: C.black,
-                }}
-              >
-                {img.fiber}
+                }}>
+                  {img.fiber}
+                </div>
               </div>
-            </div>
-          )}
-          {img.part && (
-            <div style={{ textAlign: "center" }}>
-              <div
-                style={{
+            )}
+            {img.part && (
+              <div style={{ textAlign: "center" }}>
+                <div style={{
                   fontFamily: "'Space Mono', monospace",
                   fontSize: "0.58rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
-                  color: "#555555",
-                  marginBottom: "3px",
-                }}
-              >
-                Part
-              </div>
-              <div
-                style={{
+                  color: "#666666",
+                  marginBottom: "2px",
+                }}>
+                  Part
+                </div>
+                <div style={{
                   fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.96rem",
+                  fontSize: "0.88rem",
                   fontWeight: "700",
                   color: C.black,
-                }}
-              >
-                {img.part}
+                }}>
+                  {img.part}
+                </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       )}
     </div>
@@ -1010,13 +969,14 @@ const PlantDetail = ({ plant, onBack }) => {
                           width: "100%",
                           aspectRatio: "3/4",
                           overflow: "hidden",
-                          background: C.offWhite,
+                          background: PLANT_MOCK_COLORS[plant.id] ?? C.offWhite,
                         }}
                       >
                         {plant.plantImg && (
                           <img
                             src={plant.plantImg}
                             alt={`${plant.commonName} plant`}
+                            onError={(e) => { e.currentTarget.style.display = "none"; }}
                             style={{
                               width: "100%",
                               height: "100%",
@@ -1142,13 +1102,14 @@ const PlantDetail = ({ plant, onBack }) => {
                         width: "120px",
                         aspectRatio: "3/4",
                         overflow: "hidden",
-                        background: C.offWhite,
+                        background: PLANT_MOCK_COLORS[plant.id] ?? C.offWhite,
                       }}
                     >
                       {plant.plantImg && (
                         <img
                           src={plant.plantImg}
                           alt={`${plant.commonName} plant`}
+                          onError={(e) => { e.currentTarget.style.display = "none"; }}
                           style={{
                             width: "100%",
                             height: "100%",
