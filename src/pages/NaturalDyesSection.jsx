@@ -6,8 +6,8 @@ import { useIsMobile } from "../components.jsx";
 // DATA
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ALL_PARTS = ["berries", "flowers", "leaves", "roots", "stems", "pits"];
-const ALL_FABRICS = ["cotton", "linen", "wool"];
+const ALL_PARTS = ["Flowers", "Leaves", "Roots"];
+const ALL_FABRICS = ["Cotton", "Linen", "Wool"];
 
 // Each batch image: { src, fiber, part } — fiber and part appear on hover.
 // Each plant: invasive (bool) drives the PNW Invasive badge; plantImg is the
@@ -15,17 +15,23 @@ const ALL_FABRICS = ["cotton", "linen", "wool"];
 
 const PLANTS = [
   {
-    id: "avocado",
-    commonName: "Avocado",
-    latinName: "Persea americana",
-    invasive: false,
-    plantImg: "/images/natural-dyes/avocado/avocado_after.jpg",
-    parts: ["pits"],
+    id: "garlic-mustard",
+    commonName: "Garlic Mustard",
+    latinName: "Alliaria petiolata",
+    invasive: true,
+    plantImg: "/images/natural-dyes/garlic-mustard/garlic_mustard_plant.jpeg",
+    parts: ["leaves", "roots", "flowers"],
     fabrics: ["cotton", "linen", "wool"],
     swatches: [
-      "/images/natural-dyes/avocado/avocado_comparison.jpg",
-      "/images/natural-dyes/avocado/avocado_comparison.jpg",
-      "/images/natural-dyes/avocado/avocado_comparison.jpg",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_flowers_linen.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_flowers_cotton.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_flowers_wool.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_leaves_linen.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_leaves_cotton.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_leaves_wool.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_roots_linen.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_roots_cotton.png",
+      "/images/natural-dyes/garlic-mustard/garlic_mustard_roots_wool.png",
     ],
     batches: [
       {
@@ -33,207 +39,60 @@ const PLANTS = [
         label: "01",
         images: [
           {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Linen",
-            part: "Leaves",
-          },
-          {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Linen",
-            part: "Roots",
-          },
-          {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_flowers_linen.png",
             fiber: "Linen",
             part: "Flowers",
           },
           {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Wool",
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_leaves_linen.png",
+            fiber: "Linen",
             part: "Leaves",
           },
           {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Wool",
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_roots_linen.png",
+            fiber: "Linen",
             part: "Roots",
           },
           {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_flowers_cotton.png",
+            fiber: "Cotton",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_leaves_cotton.png",
+            fiber: "Cotton",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_roots_cotton.png",
+            fiber: "Cotton",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_flowers_wool.png",
             fiber: "Wool",
             part: "Flowers",
           },
           {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Cotton",
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_leaves_wool.png",
+            fiber: "Wool",
             part: "Leaves",
           },
           {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Cotton",
+            src: "/images/natural-dyes/garlic-mustard/garlic_mustard_roots_wool.png",
+            fiber: "Wool",
             part: "Roots",
-          },
-          {
-            src: "/images/natural-dyes/avocado/avocado_comparison.jpg",
-            fiber: "Cotton",
-            part: "Flowers",
           },
         ],
         dyePrep: {
           condition: "Fresh",
-          parts: "Pits",
+          parts: "Flowers, Leaves, Roots",
           pH: "9",
           ratio: "3:1",
-          temp: "160°F / 71°C",
-          extractionTime: "1 hr / 4 days",
+          temp: "180°F / 82°C",
           dyeTime: "1hr",
         },
         notes: "",
-      },
-    ],
-  },
-  {
-    id: "weld",
-    commonName: "Weld",
-    latinName: "Reseda luteola",
-    invasive: true,
-    plantImg: "/images/natural-dyes/weld/plant.jpg",
-    parts: ["flowers", "leaves", "stems"],
-    fabrics: ["linen", "silk", "wool"],
-    swatches: [
-      "/images/natural-dyes/weld/swatch-1.jpg",
-      "/images/natural-dyes/weld/swatch-2.jpg",
-    ],
-    batches: [
-      {
-        id: "b1",
-        label: "01",
-        images: [
-          { src: "/images/natural-dyes/weld/b1-1.jpg", fiber: "Linen", part: "Stems" },
-          { src: "/images/natural-dyes/weld/b1-2.jpg", fiber: "Wool", part: "Flowers" },
-          { src: "/images/natural-dyes/weld/b1-3.jpg", fiber: "Linen", part: "Leaves" },
-        ],
-        dyePrep: {
-          mordant: "Alum",
-          parts: "Whole plant",
-          preSoak: "—",
-          ratio: "1:1",
-          temp: "180°F / 82°C",
-          time: "45 min.",
-        },
-        notes: "",
-      },
-    ],
-  },
-  {
-    id: "madder",
-    commonName: "Madder",
-    latinName: "Rubia tinctorum",
-    invasive: false,
-    plantImg: "/images/natural-dyes/madder/plant.jpg",
-    parts: ["roots"],
-    fabrics: ["cotton", "linen", "wool"],
-    swatches: [
-      "/images/natural-dyes/madder/swatch-1.jpg",
-      "/images/natural-dyes/madder/swatch-2.jpg",
-      "/images/natural-dyes/madder/swatch-3.jpg",
-    ],
-    batches: [
-      {
-        id: "b1",
-        label: "01",
-        images: [
-          { src: "/images/natural-dyes/madder/b1-1.jpg", fiber: "Linen", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-2.jpg", fiber: "Wool", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-3.jpg", fiber: "Cotton", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-4.jpg", fiber: "Linen", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-5.jpg", fiber: "Wool", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-6.jpg", fiber: "Cotton", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-7.jpg", fiber: "Linen", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-8.jpg", fiber: "Wool", part: "Roots" },
-          { src: "/images/natural-dyes/madder/b1-9.jpg", fiber: "Cotton", part: "Roots" },
-        ],
-        dyePrep: {
-          mordant: "Alum",
-          parts: "Dried roots",
-          preSoak: "2 hours",
-          ratio: "1:2",
-          temp: "150°F / 65°C",
-          time: "1 hr.",
-        },
-        notes:
-          "Do not boil — heat above 170°F shifts colour toward orange-brown.",
-      },
-    ],
-  },
-  {
-    id: "black-walnut",
-    commonName: "Black Walnut",
-    latinName: "Juglans nigra",
-    invasive: false,
-    plantImg: "/images/natural-dyes/black-walnut/plant.jpg",
-    parts: ["hulls"],
-    fabrics: ["cotton", "linen", "silk", "wool"],
-    swatches: [
-      "/images/natural-dyes/black-walnut/swatch-1.jpg",
-      "/images/natural-dyes/black-walnut/swatch-2.jpg",
-    ],
-    batches: [
-      {
-        id: "b1",
-        label: "01",
-        images: [
-          { src: "/images/natural-dyes/black-walnut/b1-1.jpg", fiber: "Linen", part: "Hulls" },
-          { src: "/images/natural-dyes/black-walnut/b1-2.jpg", fiber: "Wool", part: "Hulls" },
-          { src: "/images/natural-dyes/black-walnut/b1-3.jpg", fiber: "Cotton", part: "Hulls" },
-        ],
-        dyePrep: {
-          mordant: "None (self-mordanting)",
-          parts: "Green hulls",
-          preSoak: "—",
-          ratio: "2:1",
-          temp: "Simmer",
-          time: "2 hr.",
-        },
-        notes:
-          "Wear gloves — juglone stains skin and is very difficult to remove.",
-      },
-    ],
-  },
-  {
-    id: "onion-skin",
-    commonName: "Onion Skin",
-    latinName: "Allium cepa",
-    invasive: false,
-    plantImg: "/images/natural-dyes/onion-skin/plant.jpg",
-    parts: ["skins"],
-    fabrics: ["cotton", "silk", "wool"],
-    swatches: [
-      "/images/natural-dyes/onion-skin/swatch-1.jpg",
-      "/images/natural-dyes/onion-skin/swatch-2.jpg",
-      "/images/natural-dyes/onion-skin/swatch-3.jpg",
-    ],
-    batches: [
-      {
-        id: "b1",
-        label: "01",
-        images: [
-          { src: "/images/natural-dyes/onion-skin/b1-1.jpg", fiber: "Cotton", part: "Skins" },
-          { src: "/images/natural-dyes/onion-skin/b1-2.jpg", fiber: "Wool", part: "Skins" },
-          { src: "/images/natural-dyes/onion-skin/b1-3.jpg", fiber: "Cotton", part: "Skins" },
-          { src: "/images/natural-dyes/onion-skin/b1-4.jpg", fiber: "Wool", part: "Skins" },
-          { src: "/images/natural-dyes/onion-skin/b1-5.jpg", fiber: "Cotton", part: "Skins" },
-          { src: "/images/natural-dyes/onion-skin/b1-6.jpg", fiber: "Wool", part: "Skins" },
-        ],
-        dyePrep: {
-          mordant: "Alum",
-          parts: "Dry outer skins",
-          preSoak: "30 min.",
-          ratio: "1:1",
-          temp: "180°F / 82°C",
-          time: "45 min.",
-        },
-        notes:
-          "Yellow onion skins yield golden orange; red onion skins yield muted green-gold.",
       },
     ],
   },
@@ -243,12 +102,12 @@ const PLANTS = [
 // FILTER CONTENT (shared between desktop panel and mobile accordion)
 // ─────────────────────────────────────────────────────────────────────────────
 
-const FilterSection = ({ title, items, selected, onToggle }) => (
-  <div style={{ marginBottom: "28px" }}>
+const FilterSection = ({ title, items, selected, onToggle, wrapperStyle }) => (
+  <div style={{ marginBottom: "28px", ...wrapperStyle }}>
     <p
       style={{
         fontFamily: "'Space Mono', monospace",
-        fontSize: "0.55rem",
+        fontSize: "0.72rem",
         fontWeight: "700",
         color: C.midGray,
         textTransform: "uppercase",
@@ -268,7 +127,7 @@ const FilterSection = ({ title, items, selected, onToggle }) => (
           cursor: "pointer",
           marginBottom: "9px",
           fontFamily: "'Space Mono', monospace",
-          fontSize: "0.68rem",
+          fontSize: "0.82rem",
           color: selected.includes(item.id) ? C.black : C.darkGray,
           userSelect: "none",
         }}
@@ -296,6 +155,7 @@ const FilterSection = ({ title, items, selected, onToggle }) => (
 );
 
 const FilterContent = ({ filters, onChange, plants }) => {
+  const isMobile = useIsMobile();
   const toggle = (cat, val) => {
     const cur = filters[cat];
     onChange({
@@ -303,25 +163,40 @@ const FilterContent = ({ filters, onChange, plants }) => {
       [cat]: cur.includes(val) ? cur.filter((v) => v !== val) : [...cur, val],
     });
   };
+  const sectionStyle = isMobile ? { flex: "1 1 130px" } : {};
   return (
-    <div>
+    <div
+      style={
+        isMobile
+          ? {
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0 28px",
+              alignItems: "flex-start",
+            }
+          : {}
+      }
+    >
       <FilterSection
         title="Plant"
         items={plants.map((p) => ({ id: p.id, label: p.commonName }))}
         selected={filters.plants}
         onToggle={(v) => toggle("plants", v)}
+        wrapperStyle={sectionStyle}
       />
       <FilterSection
         title="Plant Part"
         items={ALL_PARTS.map((p) => ({ id: p, label: p }))}
         selected={filters.parts}
         onToggle={(v) => toggle("parts", v)}
+        wrapperStyle={sectionStyle}
       />
       <FilterSection
         title="Fabric"
         items={ALL_FABRICS.map((f) => ({ id: f, label: f }))}
         selected={filters.fabrics}
         onToggle={(v) => toggle("fabrics", v)}
+        wrapperStyle={sectionStyle}
       />
     </div>
   );
@@ -330,6 +205,81 @@ const FilterContent = ({ filters, onChange, plants }) => {
 // ─────────────────────────────────────────────────────────────────────────────
 // INDEX VIEW
 // ─────────────────────────────────────────────────────────────────────────────
+
+const IndexSwatchCell = ({ img, plant, onClick }) => {
+  const [hovered, setHovered] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
+  const showMock = !img.src || imgFailed;
+  return (
+    <div
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ aspectRatio: "1/1", position: "relative", cursor: "pointer" }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          transform: hovered ? "scale(1.06)" : "scale(1)",
+          transition: "transform 0.25s ease",
+          zIndex: hovered ? 1 : 0,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            overflow: "hidden",
+            background: showMock
+              ? PLANT_MOCK_COLORS[plant.id] ?? C.offWhite
+              : "transparent",
+          }}
+        >
+          {img.src && (
+            <img
+              src={img.src}
+              alt={plant.commonName}
+              onError={() => setImgFailed(true)}
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                display: "block",
+              }}
+            />
+          )}
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            pointerEvents: "none",
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.78rem",
+              fontWeight: "700",
+              color: C.black,
+              letterSpacing: "0.05em",
+              textAlign: "center",
+              padding: "0 10px",
+              opacity: hovered ? 1 : 0,
+              transition: "opacity 0.2s ease",
+            }}
+          >
+            {plant.commonName}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
   const isMobile = useIsMobile();
@@ -340,26 +290,30 @@ const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
     parts: [],
     fabrics: [],
   });
-  const [hoveredKey, setHoveredKey] = useState(null);
 
-  const filtered = plants.filter((p) => {
-    if (filters.plants.length && !filters.plants.includes(p.id)) return false;
-    if (
-      filters.parts.length &&
-      !filters.parts.every((pt) => p.parts.includes(pt))
+  const swatches = plants
+    .flatMap((p) =>
+      p.batches.flatMap((b) => b.images.map((img) => ({ img, plant: p })))
     )
-      return false;
-    if (
-      filters.fabrics.length &&
-      !filters.fabrics.every((f) => p.fabrics.includes(f))
-    )
-      return false;
-    return true;
-  });
-
-  const swatches = filtered.flatMap((p) =>
-    p.swatches.map((img) => ({ img, plant: p }))
-  );
+    .filter(({ img, plant }) => {
+      if (filters.plants.length && !filters.plants.includes(plant.id))
+        return false;
+      if (
+        filters.parts.length &&
+        !filters.parts.some(
+          (pt) => img.part?.toLowerCase() === pt.toLowerCase()
+        )
+      )
+        return false;
+      if (
+        filters.fabrics.length &&
+        !filters.fabrics.some(
+          (f) => img.fiber?.toLowerCase() === f.toLowerCase()
+        )
+      )
+        return false;
+      return true;
+    });
   const activeCount =
     filters.plants.length + filters.parts.length + filters.fabrics.length;
   const clearFilters = () => setFilters({ plants: [], parts: [], fabrics: [] });
@@ -375,80 +329,14 @@ const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
           gap: "8px",
         }}
       >
-        {swatches.map(({ img, plant }, i) => {
-          const key = `${plant.id}-${i}`;
-          const hovered = hoveredKey === key;
-          return (
-            <div
-              key={key}
-              onClick={() => onSelectPlant(plant)}
-              onMouseEnter={() => setHoveredKey(key)}
-              onMouseLeave={() => setHoveredKey(null)}
-              style={{
-                aspectRatio: "1/1",
-                position: "relative",
-                cursor: "pointer",
-                transform: hovered ? "scale(1.06)" : "scale(1)",
-                transition: "transform 0.25s ease",
-                zIndex: hovered ? 1 : 0,
-              }}
-            >
-              {/* Inner div clips the image; plant mock color shows if image absent */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  overflow: "hidden",
-                  background: PLANT_MOCK_COLORS[plant.id] ?? C.offWhite,
-                }}
-              >
-                <img
-                  src={img}
-                  alt={plant.commonName}
-                  onError={(e) => { e.currentTarget.style.display = "none"; }}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                  }}
-                />
-              </div>
-
-              {/* Centered hover overlay */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: hovered
-                    ? "rgba(13,13,13,0.65)"
-                    : "rgba(13,13,13,0)",
-                  transition: "background 0.25s ease",
-                  pointerEvents: "none",
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "'Space Mono', monospace",
-                    fontSize: "0.78rem",
-                    fontWeight: "700",
-                    color: "#F0ECD8",
-                    letterSpacing: "0.05em",
-                    textAlign: "center",
-                    padding: "0 10px",
-                    opacity: hovered ? 1 : 0,
-                    transition: "opacity 0.2s ease",
-                  }}
-                >
-                  {plant.commonName}
-                </span>
-              </div>
-            </div>
-          );
-        })}
+        {swatches.map(({ img, plant }, i) => (
+          <IndexSwatchCell
+            key={`${plant.id}-${i}`}
+            img={img}
+            plant={plant}
+            onClick={() => onSelectPlant(plant)}
+          />
+        ))}
       </div>
     ) : (
       <p
@@ -487,7 +375,7 @@ const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
           letterSpacing: "0.1em",
         }}
       >
-        plant-based colour &amp; textile experiments
+        plant-based color &amp; textile experiments
       </p>
 
       {/* Controls bar */}
@@ -749,23 +637,26 @@ const InvasiveBadge = () => (
 
 // 9 distinct colors cycling across cells in a 3×3 grid
 const MOCK_COLORS = [
-  "#B8C4CC", "#C9B87A", "#C47A65", "#8A7060",
-  "#B89A5A", "#8A9E8A", "#B89090", "#C4B090", "#A090B0",
+  "#B8C4CC",
+  "#C9B87A",
+  "#C47A65",
+  "#8A7060",
+  "#B89A5A",
+  "#8A9E8A",
+  "#B89090",
+  "#C4B090",
+  "#A090B0",
 ];
 
-// One representative color per plant — used on index swatches and plant photo placeholder
-const PLANT_MOCK_COLORS = {
-  "avocado":      "#D4B896",
-  "weld":         "#C9B660",
-  "madder":       "#C46055",
-  "black-walnut": "#7A6050",
-  "onion-skin":   "#C4A050",
-};
+// Per-plant fallback color shown when plant photo or swatch image is unavailable
+const PLANT_MOCK_COLORS = {};
 
-// 3×3 grid cell — always shows mock color; hover reveals fiber/part in a white panel
+// 3×3 grid cell — loads real image if available, falls back to mock color
 const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
   const [hovered, setHovered] = useState(false);
+  const [imgFailed, setImgFailed] = useState(false);
   const hasMeta = img && (img.fiber || img.part);
+  const showMock = !img?.src || imgFailed;
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -773,10 +664,25 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
       style={{
         aspectRatio: "1/1",
         overflow: "hidden",
-        background: MOCK_COLORS[index % MOCK_COLORS.length],
+        background: showMock
+          ? MOCK_COLORS[index % MOCK_COLORS.length]
+          : "transparent",
         position: "relative",
       }}
     >
+      {img?.src && !imgFailed && (
+        <img
+          src={img.src}
+          alt={`${plantName} batch ${batchLabel} — ${index + 1}`}
+          onError={() => setImgFailed(true)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            display: "block",
+          }}
+        />
+      )}
       {hasMeta && hovered && (
         <div
           style={{
@@ -788,54 +694,64 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
             pointerEvents: "none",
           }}
         >
-          <div style={{
-            background: "rgba(255,255,255,0.88)",
-            padding: "10px 16px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: "8px",
-          }}>
+          <div
+            style={{
+              background: "rgba(255,255,255,0.88)",
+              padding: "10px 16px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "8px",
+            }}
+          >
             {img.fiber && (
               <div style={{ textAlign: "center" }}>
-                <div style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.58rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#666666",
-                  marginBottom: "2px",
-                }}>
+                <div
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "0.58rem",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "#666666",
+                    marginBottom: "2px",
+                  }}
+                >
                   Fiber
                 </div>
-                <div style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.88rem",
-                  fontWeight: "700",
-                  color: C.black,
-                }}>
+                <div
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "0.88rem",
+                    fontWeight: "700",
+                    color: C.black,
+                  }}
+                >
                   {img.fiber}
                 </div>
               </div>
             )}
             {img.part && (
               <div style={{ textAlign: "center" }}>
-                <div style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.58rem",
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "#666666",
-                  marginBottom: "2px",
-                }}>
+                <div
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "0.58rem",
+                    letterSpacing: "0.18em",
+                    textTransform: "uppercase",
+                    color: "#666666",
+                    marginBottom: "2px",
+                  }}
+                >
                   Part
                 </div>
-                <div style={{
-                  fontFamily: "'Space Mono', monospace",
-                  fontSize: "0.88rem",
-                  fontWeight: "700",
-                  color: C.black,
-                }}>
+                <div
+                  style={{
+                    fontFamily: "'Space Mono', monospace",
+                    fontSize: "0.88rem",
+                    fontWeight: "700",
+                    color: C.black,
+                  }}
+                >
                   {img.part}
                 </div>
               </div>
@@ -853,7 +769,6 @@ const dyePrepRows = [
   ["pH", "pH"],
   ["Ratio", "ratio"],
   ["Temp", "temp"],
-  ["Extraction Time", "extractionTime"],
   ["Dye Time", "dyeTime"],
 ];
 
@@ -886,29 +801,93 @@ const PlantDetail = ({ plant, onBack }) => {
         ← natural dyes
       </button>
 
-      {/* Plant name */}
-      <h2
-        style={{
-          fontFamily: "'Cinzel Decorative', serif",
-          fontSize: isMobile ? "1.3rem" : "1.9rem",
-          color: C.black,
-          marginBottom: "6px",
-          letterSpacing: "0.02em",
-        }}
-      >
-        {plant.commonName}
-      </h2>
-      <p
-        style={{
-          fontFamily: "'Space Mono', monospace",
-          fontSize: "0.78rem",
-          color: C.midGray,
-          fontStyle: "italic",
-          marginBottom: "44px",
-        }}
-      >
-        {plant.latinName}
-      </p>
+      {/* Plant name — desktop: stacked; mobile: beside plant photo */}
+      {isMobile ? (
+        <div
+          style={{
+            display: "flex",
+            gap: "16px",
+            alignItems: "flex-start",
+            marginBottom: "36px",
+          }}
+        >
+          <div
+            style={{
+              width: "110px",
+              flexShrink: 0,
+              aspectRatio: "3/4",
+              overflow: "hidden",
+              background: PLANT_MOCK_COLORS[plant.id] ?? C.offWhite,
+            }}
+          >
+            {plant.plantImg && (
+              <img
+                src={plant.plantImg}
+                alt={`${plant.commonName} plant`}
+                onError={(e) => {
+                  e.currentTarget.style.display = "none";
+                }}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+            )}
+          </div>
+          <div style={{ flex: 1, paddingTop: "4px" }}>
+            <h2
+              style={{
+                fontFamily: "'Cinzel Decorative', serif",
+                fontSize: "1.3rem",
+                color: C.black,
+                marginBottom: "6px",
+                letterSpacing: "0.02em",
+              }}
+            >
+              {plant.commonName}
+            </h2>
+            <p
+              style={{
+                fontFamily: "'Space Mono', monospace",
+                fontSize: "0.78rem",
+                color: C.midGray,
+                fontStyle: "italic",
+                marginBottom: "12px",
+              }}
+            >
+              {plant.latinName}
+            </p>
+            {plant.invasive && <InvasiveBadge />}
+          </div>
+        </div>
+      ) : (
+        <>
+          <h2
+            style={{
+              fontFamily: "'Cinzel Decorative', serif",
+              fontSize: "1.9rem",
+              color: C.black,
+              marginBottom: "6px",
+              letterSpacing: "0.02em",
+            }}
+          >
+            {plant.commonName}
+          </h2>
+          <p
+            style={{
+              fontFamily: "'Space Mono', monospace",
+              fontSize: "0.78rem",
+              color: C.midGray,
+              fontStyle: "italic",
+              marginBottom: "44px",
+            }}
+          >
+            {plant.latinName}
+          </p>
+        </>
+      )}
 
       {/* Batches — [photo left | batch label + grid + prep right] */}
       <div style={{ display: "flex", flexDirection: "column", gap: "72px" }}>
@@ -976,7 +955,9 @@ const PlantDetail = ({ plant, onBack }) => {
                           <img
                             src={plant.plantImg}
                             alt={`${plant.commonName} plant`}
-                            onError={(e) => { e.currentTarget.style.display = "none"; }}
+                            onError={(e) => {
+                              e.currentTarget.style.display = "none";
+                            }}
                             style={{
                               width: "100%",
                               height: "100%",
@@ -1095,38 +1076,6 @@ const PlantDetail = ({ plant, onBack }) => {
             ) : (
               /* Mobile: stacked */
               <div>
-                {batchIdx === 0 && (
-                  <div style={{ marginBottom: "20px" }}>
-                    <div
-                      style={{
-                        width: "120px",
-                        aspectRatio: "3/4",
-                        overflow: "hidden",
-                        background: PLANT_MOCK_COLORS[plant.id] ?? C.offWhite,
-                      }}
-                    >
-                      {plant.plantImg && (
-                        <img
-                          src={plant.plantImg}
-                          alt={`${plant.commonName} plant`}
-                          onError={(e) => { e.currentTarget.style.display = "none"; }}
-                          style={{
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                            display: "block",
-                          }}
-                        />
-                      )}
-                    </div>
-                    {plant.invasive && (
-                      <div style={{ width: "120px" }}>
-                        <InvasiveBadge />
-                      </div>
-                    )}
-                  </div>
-                )}
-
                 <div
                   style={{
                     display: "flex",

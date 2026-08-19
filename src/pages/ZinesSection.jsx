@@ -10,7 +10,8 @@ const ZINES_PROJECTS = [
     description:
       "An introduction to the world of natural dyeing — covering the full process from preparation to color modification. Includes 2 plant-based dye recipes. 8-page mini zine. Handbound.",
     edition: "Edition II · 2024",
-    purchaseUrl: "#",
+    purchaseUrl:
+      "mailto:lilianaterrys@gmail.com?subject=Zine%20Purchase%20Inquiry&body=Hello%20I'd%20like%20to%20purchase%20a%20zine%2C%20Dyecraft%20Volume%201%3A%20Fundamentals",
     pages: [
       "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_1.png",
       "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_2.png",
@@ -25,7 +26,8 @@ const ZINES_PROJECTS = [
     description:
       "A practical grimoire for the working dyer — required equipment, safety instructions, and suggested notetaking. For those who like their magic annotated. Includes 2 plant-based dye recipes. 8-page mini zine. Handbound.",
     edition: "Edition I · 2024",
-    purchaseUrl: "#",
+    purchaseUrl:
+      "mailto:lilianaterrys@gmail.com?subject=Zine%20Purchase%20Inquiry&body=Hello%20I'd%20like%20to%20purchase%20a%20zine%2C%20Dyecraft%20Volume%202%3A%20The%20Organized%20Witch",
     pages: [
       "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_1.png",
       "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_2.png",
