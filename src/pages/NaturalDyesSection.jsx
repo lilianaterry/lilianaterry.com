@@ -6,7 +6,7 @@ import { useIsMobile } from "../components.jsx";
 // DATA
 // ─────────────────────────────────────────────────────────────────────────────
 
-const ALL_PARTS = ["Flowers", "Leaves", "Roots"];
+const ALL_PARTS = ["Flowers", "Leaves", "Roots", "Stems"];
 const ALL_FABRICS = ["Cotton", "Linen", "Wool"];
 
 // Each batch image: { src, fiber, part } — fiber and part appear on hover.
@@ -93,6 +93,422 @@ const PLANTS = [
           dyeTime: "1hr",
         },
         notes: "",
+      },
+    ],
+  },
+  {
+    id: "butterfly-bush",
+    commonName: "Butterfly Bush",
+    latinName: "Buddleja davidii",
+    invasive: true,
+    plantImg: "/images/natural-dyes/butterfly-bush/butterfly_bush_plant.jpeg",
+    parts: ["leaves", "stems", "flowers"],
+    fabrics: ["cotton", "linen", "wool"],
+    swatches: [
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_flowers_linen.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_flowers_cotton.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_flowers_wool.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_leaves_linen.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_leaves_cotton.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_leaves_wool.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_stems_linen.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_stems_cotton.png",
+      "/images/natural-dyes/butterfly-bush/butterfly_bush_stems_wool.png",
+    ],
+    batches: [
+      {
+        id: "b1",
+        label: "01",
+        images: [
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_flowers_linen.png",
+            fiber: "Linen",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_leaves_linen.png",
+            fiber: "Linen",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_stems_linen.png",
+            fiber: "Linen",
+            part: "Stems",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_flowers_cotton.png",
+            fiber: "Cotton",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_leaves_cotton.png",
+            fiber: "Cotton",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_stems_cotton.png",
+            fiber: "Cotton",
+            part: "Stems",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_flowers_wool.png",
+            fiber: "Wool",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_leaves_wool.png",
+            fiber: "Wool",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/butterfly-bush/butterfly_bush_stems_wool.png",
+            fiber: "Wool",
+            part: "Stems",
+          },
+        ],
+        dyePrep: {
+          condition: "Fresh",
+          parts: "Flowers, Leaves, Stems",
+          pH: "9",
+          ratio: "3:1",
+          temp: "180°F / 82°C",
+          dyeTime: "1 hr",
+        },
+        notes:
+          "As Butterfly Bush is a woody shrub, the plant was separted into stems, flowers, and leaves instead of roots, flowers, and leaves.",
+      },
+    ],
+  },
+  {
+    id: "spotted-knapweed",
+    commonName: "Spotted Knapweed",
+    latinName: "Centaurea stoebe",
+    invasive: true,
+    plantImg:
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_plant.jpeg",
+    parts: ["leaves", "roots", "flowers"],
+    fabrics: ["cotton", "linen", "wool"],
+    swatches: [
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_flowers_linen.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_flowers_cotton.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_flowers_wool.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_leaves_linen.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_leaves_cotton.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_leaves_wool.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_roots_linen.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_roots_cotton.png",
+      "/images/natural-dyes/spotted-knapweed/spotted_knapweed_roots_wool.png",
+    ],
+    batches: [
+      {
+        id: "b1",
+        label: "01",
+        images: [
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_flowers_linen.png",
+            fiber: "Linen",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_leaves_linen.png",
+            fiber: "Linen",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_roots_linen.png",
+            fiber: "Linen",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_flowers_cotton.png",
+            fiber: "Cotton",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_leaves_cotton.png",
+            fiber: "Cotton",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_roots_cotton.png",
+            fiber: "Cotton",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_flowers_wool.png",
+            fiber: "Wool",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_leaves_wool.png",
+            fiber: "Wool",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/spotted-knapweed/spotted_knapweed_roots_wool.png",
+            fiber: "Wool",
+            part: "Roots",
+          },
+        ],
+        dyePrep: {
+          condition: "Fresh + 5 Days in Fridge",
+          parts: "Flowers, Leaves, Roots",
+          pH: "9",
+          ratio: "3:1",
+          temp: "180°F / 82°C",
+          dyeTime: "1 hr",
+        },
+        notes: "",
+      },
+    ],
+  },
+  {
+    id: "sulfur-cinquefoil",
+    commonName: "Sulfur Cinquefoil",
+    latinName: "Potentilla recta",
+    invasive: true,
+    plantImg:
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_plant.jpeg",
+    parts: ["leaves", "roots", "flowers"],
+    fabrics: ["cotton", "linen", "wool"],
+    swatches: [
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_flowers_linen.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_flowers_cotton.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_flowers_wool.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_leaves_linen.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_leaves_cotton.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_leaves_wool.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_roots_linen.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_roots_cotton.png",
+      "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_roots_wool.png",
+    ],
+    batches: [
+      {
+        id: "b1",
+        label: "01",
+        images: [
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_flowers_linen.png",
+            fiber: "Linen",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_leaves_linen.png",
+            fiber: "Linen",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_roots_linen.png",
+            fiber: "Linen",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_flowers_cotton.png",
+            fiber: "Cotton",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_leaves_cotton.png",
+            fiber: "Cotton",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_roots_cotton.png",
+            fiber: "Cotton",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_flowers_wool.png",
+            fiber: "Wool",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_leaves_wool.png",
+            fiber: "Wool",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/sulfur-cinquefoil/sulfur_cinquefoil_roots_wool.png",
+            fiber: "Wool",
+            part: "Roots",
+          },
+        ],
+        dyePrep: {
+          condition: "Fresh + 24 hours",
+          parts: "Flowers, Leaves, Roots",
+          pH: "3",
+          ratio: "3:1",
+          temp: "180°F / 82°C",
+          dyeTime: "1hr",
+        },
+        notes: "",
+      },
+    ],
+  },
+  {
+    id: "orange-hawkweed",
+    commonName: "Orange Hawkweed",
+    latinName: "Pilosella aurantiaca",
+    invasive: true,
+    plantImg: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_plant.JPEG",
+    parts: ["leaves", "roots", "flowers"],
+    fabrics: ["cotton", "linen", "wool"],
+    swatches: [
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_flowers_linen.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_flowers_cotton.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_flowers_wool.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_leaves_linen.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_leaves_cotton.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_leaves_wool.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_roots_linen.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_roots_cotton.png",
+      "/images/natural-dyes/orange-hawkweed/orange_hawkweed_roots_wool.png",
+    ],
+    batches: [
+      {
+        id: "b1",
+        label: "01",
+        images: [
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_flowers_linen.png",
+            fiber: "Linen",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_leaves_linen.png",
+            fiber: "Linen",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_roots_linen.png",
+            fiber: "Linen",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_flowers_cotton.png",
+            fiber: "Cotton",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_leaves_cotton.png",
+            fiber: "Cotton",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_roots_cotton.png",
+            fiber: "Cotton",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_flowers_wool.png",
+            fiber: "Wool",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_leaves_wool.png",
+            fiber: "Wool",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/orange-hawkweed/orange_hawkweed_roots_wool.png",
+            fiber: "Wool",
+            part: "Roots",
+          },
+        ],
+        dyePrep: {
+          condition: "Fresh + 6 Days in Fridge",
+          parts: "Flowers, Leaves, Roots",
+          pH: "6 - Flowers / 9 - Leaves & Roots",
+          ratio: "3:1",
+          temp: "160°F / 71°C",
+          dyeTime: "1 hr",
+        },
+        notes:
+          "Was only able to collect 8.6g of flowers. Therefore, flower swatches were dyed with ~2:1 ratio. \n Roots did not produce a dye after 1 hr so root swatches were dyed for 1 hr x 3 days at 180°F / 82°C",
+      },
+    ],
+  },
+  {
+    id: "spotted-jewelweed",
+    commonName: "Spotted Jewelweed",
+    latinName: "Impatiens capensis",
+    invasive: true,
+    plantImg:
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_plant.jpeg",
+    parts: ["leaves", "roots", "flowers"],
+    fabrics: ["cotton", "linen", "wool"],
+    swatches: [
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_flowers_linen.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_flowers_cotton.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_flowers_wool.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_leaves_linen.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_leaves_cotton.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_leaves_wool.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_roots_linen.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_roots_cotton.png",
+      "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_roots_wool.png",
+    ],
+    batches: [
+      {
+        id: "b1",
+        label: "01",
+        images: [
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_flowers_linen.png",
+            fiber: "Linen",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_leaves_linen.png",
+            fiber: "Linen",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_roots_linen.png",
+            fiber: "Linen",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_flowers_cotton.png",
+            fiber: "Cotton",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_leaves_cotton.png",
+            fiber: "Cotton",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_roots_cotton.png",
+            fiber: "Cotton",
+            part: "Roots",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_flowers_wool.png",
+            fiber: "Wool",
+            part: "Flowers",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_leaves_wool.png",
+            fiber: "Wool",
+            part: "Leaves",
+          },
+          {
+            src: "/images/natural-dyes/spotted-jewelweed/spotted_jewelweed_roots_wool.png",
+            fiber: "Wool",
+            part: "Roots",
+          },
+        ],
+        dyePrep: {
+          condition: "Fresh + 5 Days in Fridge",
+          parts: "Flowers, Leaves, Roots",
+          pH: "10",
+          ratio: "3:1",
+          temp: "180°F / 82°C",
+          dyeTime: "1 hr",
+        },
+        notes:
+          "Was only able to collect 8.4g of flower. Therefore flower swatches were dyed with ~2:1 ratio.",
       },
     ],
   },
@@ -232,7 +648,7 @@ const IndexSwatchCell = ({ img, plant, onClick }) => {
             inset: 0,
             overflow: "hidden",
             background: showMock
-              ? PLANT_MOCK_COLORS[plant.id] ?? C.offWhite
+              ? (PLANT_MOCK_COLORS[plant.id] ?? C.offWhite)
               : "transparent",
           }}
         >
@@ -244,7 +660,7 @@ const IndexSwatchCell = ({ img, plant, onClick }) => {
               style={{
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
+                objectFit: "contain",
                 display: "block",
               }}
             />
@@ -293,7 +709,7 @@ const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
 
   const swatches = plants
     .flatMap((p) =>
-      p.batches.flatMap((b) => b.images.map((img) => ({ img, plant: p })))
+      p.batches.flatMap((b) => b.images.map((img) => ({ img, plant: p }))),
     )
     .filter(({ img, plant }) => {
       if (filters.plants.length && !filters.plants.includes(plant.id))
@@ -301,14 +717,14 @@ const NaturalDyesIndex = ({ plants, onSelectPlant }) => {
       if (
         filters.parts.length &&
         !filters.parts.some(
-          (pt) => img.part?.toLowerCase() === pt.toLowerCase()
+          (pt) => img.part?.toLowerCase() === pt.toLowerCase(),
         )
       )
         return false;
       if (
         filters.fabrics.length &&
         !filters.fabrics.some(
-          (f) => img.fiber?.toLowerCase() === f.toLowerCase()
+          (f) => img.fiber?.toLowerCase() === f.toLowerCase(),
         )
       )
         return false;
@@ -678,7 +1094,7 @@ const BatchImageCell = ({ img, plantName, batchLabel, index }) => {
           style={{
             width: "100%",
             height: "100%",
-            objectFit: "cover",
+            objectFit: "contain",
             display: "block",
           }}
         />
@@ -1220,7 +1636,7 @@ const NaturalDyesSection = ({ plantId = null, onNavigate }) => {
   }, [plantId]);
 
   const selectedPlant = plantId
-    ? PLANTS.find((p) => p.id === plantId) ?? null
+    ? (PLANTS.find((p) => p.id === plantId) ?? null)
     : null;
 
   if (selectedPlant) {

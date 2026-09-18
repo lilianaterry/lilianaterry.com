@@ -425,14 +425,14 @@ export const TopNav = ({ activeSection, setActiveSection, onHome }) => {
       style={{
         position: "fixed",
         top: 0, left: 0, right: 0,
-        height: "54px",
+        minHeight: "54px",
         background: C.white,
         borderBottom: `2px solid ${C.black}`,
         display: "flex",
         alignItems: "center",
-        padding: "0 20px",
+        padding: isMobile ? "8px 12px" : "0 20px",
         zIndex: 100,
-        overflowX: "auto",
+        overflowX: isMobile ? "visible" : "auto",
       }}
     >
       <div
@@ -444,34 +444,45 @@ export const TopNav = ({ activeSection, setActiveSection, onHome }) => {
           flexShrink: 0,
           cursor: "pointer",
           marginLeft: isMobile ? 0 : "auto",
-          marginRight: isMobile ? 0 : "24px",
+          marginRight: isMobile ? "10px" : "24px",
         }}
       >
         <CrescentMoon size={15} />
-        <span
-          style={{
-            fontFamily: "'Cinzel Decorative', serif",
-            fontSize: "0.8rem",
-            color: C.black,
-            whiteSpace: "nowrap",
-            letterSpacing: "0.03em",
-          }}
-        >
-          Liliana Airhart
-        </span>
+        {!isMobile && (
+          <span
+            style={{
+              fontFamily: "'Cinzel Decorative', serif",
+              fontSize: "0.8rem",
+              color: C.black,
+              whiteSpace: "nowrap",
+              letterSpacing: "0.03em",
+            }}
+          >
+            Liliana Airhart
+          </span>
+        )}
       </div>
-      <nav style={{ display: "flex", gap: "6px", marginLeft: isMobile ? "auto" : 0 }}>
+      <nav
+        style={{
+          display: "flex",
+          flexWrap: isMobile ? "wrap" : "nowrap",
+          gap: isMobile ? "6px" : "6px",
+          marginLeft: isMobile ? 0 : 0,
+          justifyContent: isMobile ? "flex-end" : "flex-start",
+          flex: isMobile ? 1 : undefined,
+        }}
+      >
         {NAV_ITEMS.map((item) => (
           <button
             key={item.id}
             onClick={() => setActiveSection(item.id)}
             style={{
               fontFamily: "'Space Mono', monospace",
-              fontSize: "0.58rem",
+              fontSize: isMobile ? "0.62rem" : "0.58rem",
               fontWeight: "700",
               textTransform: "uppercase",
               letterSpacing: "0.08em",
-              padding: "5px 10px",
+              padding: isMobile ? "6px 9px" : "5px 10px",
               border: `1.5px solid ${C.black}`,
               background: activeSection === item.id ? C.black : "transparent",
               color: activeSection === item.id ? C.white : C.black,

@@ -146,6 +146,43 @@ const FaceBook = ({ id, title, art, isHovered, onHover, onLeave, onNavigate }) =
   </div>
 );
 
+// Mobile-only card: same look as FaceBook, but sized to fill a 2-column grid
+// instead of the fixed dimensions the desktop shelf needs for alignment.
+const MobileFaceBook = ({ id, title, art, isHovered, onHover, onLeave, onNavigate }) => (
+  <div
+    onClick={(e) => onNavigate(id, e)}
+    onMouseEnter={() => onHover(id)}
+    onMouseLeave={onLeave}
+    style={{
+      width: "100%",
+      aspectRatio: "1 / 1.2",
+      background: "#0D0D0D",
+      border: `1.5px solid ${isHovered ? "rgba(200,165,90,0.4)" : "#2A2A2A"}`,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "10px",
+      padding: "14px 8px 14px",
+      cursor: "pointer",
+      transform: isHovered ? "translateY(-6px)" : "translateY(0)",
+      transition: "transform 0.22s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.22s ease, border-color 0.22s ease",
+      boxShadow: isHovered
+        ? "0 16px 40px rgba(0,0,0,0.9), 0 0 16px rgba(255,210,130,0.35), 0 0 50px rgba(220,175,80,0.18)"
+        : "4px 6px 16px rgba(0,0,0,0.7)",
+      position: "relative",
+    }}
+  >
+    <div style={{ position: "absolute", inset: 5, border: "1px solid #1E1E1E", pointerEvents: "none" }} />
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+      {COVER_ARTS[art]}
+    </div>
+    <div style={{ fontFamily: "'Cinzel Decorative', serif", fontSize: "14px", color: "#888", letterSpacing: "0.14em", textAlign: "center" }}>
+      {title}
+    </div>
+  </div>
+);
+
 // ── Shelf data ───────────────────────────────────────────────────────────────
 
 const SHELF_1 = [
@@ -265,14 +302,22 @@ const LandingPage = ({ onNavigate }) => {
             illustrator · maker
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "row", gap: "12px", justifyContent: "center" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "16px",
+            width: "100%",
+            maxWidth: "400px",
+          }}
+        >
           {[
             { id: "zines",        title: "ZINES",        art: "eye"     },
             { id: "natural-dyes", title: "NATURAL DYES", art: "leaf"    },
             { id: "about",        title: "ABOUT",        art: "moon"    },
             { id: "contact",      title: "CONTACT",      art: "feather" },
           ].map((b) => (
-            <FaceBook
+            <MobileFaceBook
               key={b.id}
               id={b.id}
               title={b.title}
