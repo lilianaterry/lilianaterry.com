@@ -6,33 +6,33 @@ const ZINES_PROJECTS = [
   {
     id: 1,
     title: "Dyecraft Volume 1: Fundamentals",
-    img: "/images/zines/dyecraft_volume1/volume1_hero_shot.jpg",
+    img: "/images/zines/dyecraft_volume1/volume1_hero_shot.webp",
     description:
       "An introduction to the world of natural dyeing — covering the full process from preparation to color modification. Includes 2 plant-based dye recipes. 8-page mini zine. Handbound.",
     edition: "Edition II · 2024",
     purchaseUrl:
       "mailto:lilianaterrys@gmail.com?subject=Zine%20Purchase%20Inquiry&body=Hello%20I'd%20like%20to%20purchase%20a%20zine%2C%20Dyecraft%20Volume%201%3A%20Fundamentals",
     pages: [
-      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_1.png",
-      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_2.png",
-      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_3.png",
-      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_4.png",
+      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_1.webp",
+      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_2.webp",
+      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_3.webp",
+      "/images/zines/dyecraft_volume1/dyecraft_volume1_edition2_4.webp",
     ],
   },
   {
     id: 2,
     title: "Dyecraft Volume 2: The Organized Witch",
-    img: "/images/zines/dyecraft_volume2/volume2_hero_shot.jpg",
+    img: "/images/zines/dyecraft_volume2/volume2_hero_shot.webp",
     description:
       "A practical grimoire for the working dyer — required equipment, safety instructions, and suggested notetaking. For those who like their magic annotated. Includes 2 plant-based dye recipes. 8-page mini zine. Handbound.",
     edition: "Edition I · 2024",
     purchaseUrl:
       "mailto:lilianaterrys@gmail.com?subject=Zine%20Purchase%20Inquiry&body=Hello%20I'd%20like%20to%20purchase%20a%20zine%2C%20Dyecraft%20Volume%202%3A%20The%20Organized%20Witch",
     pages: [
-      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_1.png",
-      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_2.png",
-      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_3.png",
-      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_4.png",
+      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_1.webp",
+      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_2.webp",
+      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_3.webp",
+      "/images/zines/dyecraft_volume2/dyecraft_volume2_edition1_4.webp",
     ],
   },
 ];
@@ -255,6 +255,7 @@ const ZineLightbox = ({ zine, onClose }) => {
                 key={i}
                 src={src}
                 alt={`${zine.title} — page ${i + 1}`}
+                loading="lazy"
                 style={{ width: "100%", display: "block" }}
               />
             ))}

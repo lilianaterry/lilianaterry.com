@@ -40,7 +40,7 @@ const AboutSection = () => {
             }}
           >
             <img
-              src="/images/about/self_portrait.JPG"
+              src="/images/about/self_portrait.webp"
               alt="Liliana Airhart"
               style={{
                 width: "100%",
